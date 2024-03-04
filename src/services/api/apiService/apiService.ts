@@ -13,23 +13,6 @@ const instance = axios.create({
 });
 const numTries = 0;
 
-// Função para fazer o logout
-function logout() {
-  localStorage.removeItem('authUser');
-  localStorage.removeItem('user');
-  localStorage.removeItem('username');
-  localStorage.removeItem('refresh_token');
-  localStorage.removeItem('password');
-  // localStorage.removeItem('tokenExpiration');
-  window.location.reload();
-}
-
-// Função para iniciar o temporizador
-function fixNextTokenExpirationTime() {
-  localStorage.setItem('tokenExpiration', String(Date.now() + 1200000)); // 20 minutos sem request
-  // localStorage.setItem('tokenExpiration', String(Date.now() + 30000)); // 30 segundos sem request para teste
-}
-
 // Request interceptor for API calls
 instance.interceptors.request.use(
   (request) => {

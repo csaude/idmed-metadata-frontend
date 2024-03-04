@@ -103,7 +103,7 @@
             size="xl"
             fab
             icon="add"
-            @click="addClinic()"
+            @click="addClinicNew()"
             color="primary"
           />
         </q-page-sticky>
@@ -128,6 +128,7 @@ import provinceService from 'src/services/api/provinceService/provinceService.ts
 
 /*Components Import*/
 import addClinic from 'src/components/Settings/Clinic/AddClinic.vue';
+import Clinic from 'src/stores/models/clinic/Clinic';
 
 /*Declarations*/
 const showClinicRegistrationScreen = ref(false);
@@ -208,6 +209,13 @@ const visualizeClinic = (clinicParam) => {
   showClinicRegistrationScreen.value = true;
 };
 
+const addClinicNew = () => {
+  clinic.value = new Clinic();
+  step.value = 'create';
+  showClinicRegistrationScreen.value = true;
+  editMode.value = false;
+  viewMode.value = false;
+};
 /*Hooks*/
 const allProvinces = computed(() => {
   return provinceService.getAllProvinces();
