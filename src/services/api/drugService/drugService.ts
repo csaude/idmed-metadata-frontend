@@ -45,6 +45,7 @@ export default {
         .get('drug/drugFromMetadata/' + offset)
         .then((resp) => {
           offset = offset + 100;
+          drug.save(resp.data);
           if (resp.data.length > 0) {
             this.getFromProvincial(offset);
           } else {
